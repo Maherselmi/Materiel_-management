@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .formulaire {
+            background-color: #007bff;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        .formulaire h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .formulaire label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .formulaire input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .formulaire button {
+            background-color: #fff;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Formulaire de connexion -->
+<div class="formulaire">
+    <h2>Connexion</h2>
+    <form action="#" th:action="@{/login}" th:object="${loginUser}" method="post">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" th:field="*{nom}" required /><br/>
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required /><br/>
+        <input type="submit" value="Se connecter"/>
+
+        <p id="errorMessage" class="error-message" th:if="${error}" th:text="${error}"></p>
+    </form>
+</div>
+<script>
+    // Fonction pour vider les champs du formulaire
+    function resetFormAndError() {
+        document.getElementById("nom").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("errorMessage").innerText = "";
+
+    }
+
+    // Appeler la fonction pour réinitialiser le formulaire lors du chargement de la page
+    window.onload = resetFormAndError;
+</script>
+
+
+
+</body>
+
+</html>

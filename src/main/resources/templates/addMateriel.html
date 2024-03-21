@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Matériel</title>
+    <style>
+        /* Votre CSS ici */
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Ajouter un Matériel</h2>
+
+<!-- Formulaire d'ajout de matériel -->
+<!-- Formulaire d'ajout de matériel -->
+<form action="/materiel/ajouter" method="post" th:object="${materiel}">
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" th:field="*{nom}" required /><br/>
+    <label for="categorie">Catégorie:</label>
+    <select id="categorie" name="categorie" required>
+        <option value="Informatique">Informatique</option>
+        <option value="Sport">Sport</option>
+        <option value="Technique">Technique</option>
+    </select>
+    <br/>
+    <br>
+    <label for="quantite">Quantité:</label>
+    <input type="number" id="quantite" th:field="*{quantite}" required /><br/>
+    <input type="submit" value="Ajouter" />
+</form>
+
+
+<!-- Lien pour revenir à la liste de matériel -->
+<p><a th:href="@{/materiel/liste}">Retour à la liste de matériel</a></p>
+
+</body>
+
+</html>

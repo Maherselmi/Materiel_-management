@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste de Matériel</title>
+  <style>
+    /* Votre CSS ici */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Liste de Matériel</h2>
+
+<!-- Tableau pour afficher la liste de matériel -->
+<table>
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Catégorie</th>
+    <th>Quantité</th>
+    <th>Action</th> <!-- Nouvelle colonne pour les actions -->
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Utilisation de Thymeleaf pour itérer sur la liste de matériel -->
+  <tr th:each="materiel : ${listeMateriel}">
+    <td th:text="${materiel.nom}"></td>
+    <td th:text="${materiel.categorie}"></td>
+    <td th:text="${materiel.quantite}"></td>
+    <!-- Nouvelle cellule pour les actions contenant un lien "Ajouter" -->
+    <td>
+      <a th:href="@{/materiel/modifier/{id}(id=${materiel.id})}">Modifier</a>
+      <br>
+      <a th:href="@{'/materiel/supprimer/' + ${materiel.id}}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce matériel ?');">Supprimer</a>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+<a th:href="@{/materiel/ajouter}">Ajouter</a>
+
+</body>
+
+</html>
