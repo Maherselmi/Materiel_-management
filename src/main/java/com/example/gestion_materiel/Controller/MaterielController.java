@@ -32,15 +32,12 @@ public class MaterielController {
 
     @PostMapping("/ajouter")
     public String ajouterMateriel(@ModelAttribute("materiel") materiel materiel) {
-        // Sauvegarder le nouveau matériel dans la base de données
         materielRepository.save(materiel);
-        // Rediriger vers la page de la liste de matériel après l'ajout réussi
         return "redirect:/materiel/liste";
     }
 
 
 
-        // Autres méthodes du contrôleur...
 
         @GetMapping("/modifier/{id}")
         public String afficherFormulaireModification(@PathVariable("id") int id, Model model) {
@@ -57,9 +54,7 @@ public class MaterielController {
 
         @PostMapping("/modifier")
         public String modifierMateriel(@ModelAttribute("materiel") materiel materiel) {
-            // Mettre à jour le matériel dans la base de données
             materielRepository.save(materiel);
-            // Rediriger vers la page de liste de matériel après la modification réussie
             return "redirect:/materiel/liste";
         }
     @GetMapping("/supprimer/{id}")
