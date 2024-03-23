@@ -70,7 +70,6 @@
 
 <h2>Modifier un Matériel</h2>
 
-<!-- Formulaire de modification de matériel -->
 <form action="/materiel/modifier" method="post" th:object="${materiel}">
     <input type="hidden" th:field="*{id}" />
     <label for="nom">Nom:</label>
@@ -89,7 +88,6 @@
     <input type="submit" value="Modifier" />
 </form>
 
-<!-- Lien pour revenir à la liste de matériel -->
 <p><a th:href="@{/materiel/liste}">Retour à la liste de matériel</a></p>
 
 </body>

@@ -50,7 +50,7 @@
 
 <body>
 
-<!-- Formulaire de connexion -->
+
 <div class="formulaire">
     <h2>Connexion</h2>
     <form action="#" th:action="@{/login}" th:object="${loginUser}" method="post">
@@ -72,7 +72,6 @@
 
     }
 
-    // Appeler la fonction pour réinitialiser le formulaire lors du chargement de la page
     window.onload = resetFormAndError;
 </script>
 
